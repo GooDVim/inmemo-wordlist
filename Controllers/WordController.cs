@@ -12,23 +12,7 @@ namespace Inmemo.Wordlist.Controllers
         {
             _repository = repository;
         }
-        public IActionResult Seed()
-        {
-            _repository.Add(new Word
-            {
-                Name = "retrieve",
-                PartOfSpeech = PartOfSpeech.Verb,
-                Rank = 5000,
-                Total = 6275,
-                Spoken = 335,
-                Fiction = 1947,
-                Magazine = 1235,
-                Newspaper = 657,
-                Academic = 2101
-            });
-            _repository.Save();
-            return Json("test");
-        }
+
 
         [Route("{name}")]
         public JsonResult Name(string name)
