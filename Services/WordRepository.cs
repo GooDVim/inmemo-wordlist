@@ -33,6 +33,11 @@ namespace Inmemo.Wordlist.Services
             return _context.Words.FirstOrDefault(w => w.Rank == rank);
         }
 
+        public void Remove(Word word)
+        {
+            _context.Remove(word);
+        }
+
         public void Save()
         {
             _context.SaveChanges();

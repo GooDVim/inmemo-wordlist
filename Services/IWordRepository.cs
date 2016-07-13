@@ -9,6 +9,7 @@ namespace Inmemo.Wordlist.Services
         Word GetById(int id);
         IEnumerable<Word> GetByName(string name);
         Word GetByRank(int rank);
+        void Remove(Word word);
         void Save();
     }
 }

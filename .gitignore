@@ -1,4 +1,5 @@
 /bin/**/*
 /obj/**/*
-/files/**/*
+/filesToImport/**/*
+/filesAlreadyImported/**/*
 /project.lock.json
