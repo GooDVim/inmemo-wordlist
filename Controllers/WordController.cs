@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Inmemo.Wordlist.Models;
 using Inmemo.Wordlist.Services;
 using Microsoft.AspNetCore.Mvc;
 
