@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Inmemo.Wordlist.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inmemo.Wordlist.Services
 {
@@ -18,19 +20,19 @@ namespace Inmemo.Wordlist.Services
             _context.Add(word);
         }
 
-        public Word GetById(int id)
+        public Task<Word> GetByIdAsync(int id)
         {
-            return _context.Words.FirstOrDefault(w => w.Id == id);
+            return _context.Words.FirstOrDefaultAsync(w => w.Id == id);
         }
 
-        public IEnumerable<Word> GetByName(string name)
+        public Task<List<Word>> GetByNameAsync(string name)
         {
-            return _context.Words.Where(w => w.Name.Contains(name));
+            return _context.Words.Where(w => w.Name.Contains(name)).ToListAsync();
         }
 
-        public Word GetByRank(int rank)
+        public Task<Word> GetByRankAsync(int rank)
         {
-            return _context.Words.FirstOrDefault(w => w.Rank == rank);
+            return _context.Words.FirstOrDefaultAsync(w => w.Rank == rank);
         }
 
         public void Remove(Word word)
@@ -38,9 +40,9 @@ namespace Inmemo.Wordlist.Services
             _context.Remove(word);
         }
 
-        public void Save()
+        public Task SaveAsync()
         {
-            _context.SaveChanges();
+            return _context.SaveChangesAsync();
         }
     }
 }

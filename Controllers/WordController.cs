@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Inmemo.Wordlist.Models;
 using Inmemo.Wordlist.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,21 +16,24 @@ namespace Inmemo.Wordlist.Controllers
 
 
         [Route("{name}")]
-        public JsonResult Name(string name)
+        public async Task<JsonResult> Name(string name)
         {
-            return Json(_repository.GetByName(name.ToLower()));
+            var words = await _repository.GetByNameAsync(name.ToLower()); 
+            return Json(words);
         }
 
         [Route("{rank:int}")]
-        public JsonResult Rank(int rank)
+        public async Task<JsonResult> Rank(int rank)
         {
-            return Json(_repository.GetByRank(rank));
+            var word = await _repository.GetByRankAsync(rank); 
+            return Json(word);
         }
 
         [Route("{id:int}")]
-        public JsonResult Id(int id)
+        public async Task<JsonResult> Id(int id)
         {
-            return Json(_repository.GetById(id));
+            var word = await _repository.GetByIdAsync(id); 
+            return Json(word);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Inmemo.Wordlist.Models;
 
 namespace Inmemo.Wordlist.Services
@@ -6,10 +7,10 @@ namespace Inmemo.Wordlist.Services
     public interface IWordRepository
     {
         void Add(Word word);
-        Word GetById(int id);
-        IEnumerable<Word> GetByName(string name);
-        Word GetByRank(int rank);
+        Task<Word> GetByIdAsync(int id);
+        Task<List<Word>> GetByNameAsync(string name);
+        Task<Word> GetByRankAsync(int rank);
         void Remove(Word word);
-        void Save();
+        Task SaveAsync();
     }
 }
