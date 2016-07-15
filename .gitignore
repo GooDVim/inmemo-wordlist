@@ -1,5 +1,5 @@
-/bin/**/*
-/obj/**/*
-/filesToImport/**/*
-/filesAlreadyImported/**/*
-/project.lock.json
+bin/
+obj/
+/src/Wordlist/filesToImport/**/*
+/src/Wordlist/filesAlreadyImported/**/*
+project.lock.json
