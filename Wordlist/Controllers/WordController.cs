@@ -1,6 +1,9 @@
 using System.Threading.Tasks;
 using Inmemo.Wordlist.Services;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using Inmemo.Wordlist.ViewModels;
+using System.Collections.Generic;
 
 namespace Inmemo.Wordlist.Controllers
 {
@@ -8,9 +11,12 @@ namespace Inmemo.Wordlist.Controllers
     public class WordController : Controller
     {
         private IWordRepository _repository;
-        public WordController(IWordRepository repository)
+        private IMapper _mapper { get; set; }
+
+        public WordController(IWordRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
 
@@ -18,21 +24,21 @@ namespace Inmemo.Wordlist.Controllers
         public async Task<JsonResult> Name(string name)
         {
             var words = await _repository.GetByNameAsync(name.ToLower()); 
-            return Json(words);
+            return Json(_mapper.Map<List<WordViewModel>>(words));
         }
 
         [Route("{rank:int}")]
         public async Task<JsonResult> Rank(int rank)
         {
             var word = await _repository.GetByRankAsync(rank); 
-            return Json(word);
+            return Json(_mapper.Map<WordViewModel>(word));
         }
 
         [Route("{id:int}")]
         public async Task<JsonResult> Id(int id)
         {
             var word = await _repository.GetByIdAsync(id); 
-            return Json(word);
+            return Json(_mapper.Map<WordViewModel>(word));
         }
     }
 }
