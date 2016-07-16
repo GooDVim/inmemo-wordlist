@@ -1,5 +1,5 @@
 bin/
 obj/
-/wordlist/filesToImport/**/*
-/wordlist/filesAlreadyImported/**/*
+/src/Inmemo.Wordlist/filesToImport/**/*
+/src/Inmemo.Wordlist/filesAlreadyImported/**/*
 project.lock.json

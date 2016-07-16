@@ -10,9 +10,9 @@ using Moq;
 using Xunit;
 using AutoMapper;
 
-namespace Inmemo.Wordlist.Tests.UnitTests
+namespace Inmemo.Wordlist.Controllers.UnitTests
 {
-    public class WordControllerTests
+    public class WordControllerTest
     {
         private List<Word> GetWords()
         {
@@ -32,7 +32,8 @@ namespace Inmemo.Wordlist.Tests.UnitTests
             };
         }
 
-        private List<WordViewModel> GetWordViewModelList(){
+        private List<WordViewModel> GetWordViewModelList()
+        {
             return new List<WordViewModel>{
                 new WordViewModel{
                     Id = 647,

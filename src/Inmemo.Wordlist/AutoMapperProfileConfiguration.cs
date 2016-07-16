@@ -6,7 +6,8 @@ namespace Inmemo.Wordlist
 {
     public class AutoMapperProfileConfiguration : Profile
     {
-        public AutoMapperProfileConfiguration(){
+        public AutoMapperProfileConfiguration()
+        {
             CreateMap<Word, WordViewModel>();
         }
     }
