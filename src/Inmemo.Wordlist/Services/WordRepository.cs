@@ -23,8 +23,12 @@ namespace Inmemo.Wordlist.Services
         {
             return _context.Words.FirstOrDefaultAsync(w => w.Id == id);
         }
-
+        
         public Task<List<Word>> GetByNameAsync(string name)
+        {
+            return _context.Words.Where(w => w.Name == name.ToLower()).OrderBy(w => w.Rank).ToListAsync();
+        }
+        public Task<List<Word>> SearchByNameAsync(string name)
         {
             return _context.Words.Where(w => w.Name.Contains(name)).OrderBy(w => w.Rank).ToListAsync();
         }

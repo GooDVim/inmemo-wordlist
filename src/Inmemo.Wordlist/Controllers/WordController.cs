@@ -27,6 +27,13 @@ namespace Inmemo.Wordlist.Controllers
             return Json(_mapper.Map<List<WordViewModel>>(words));
         }
 
+        [Route("{query}")]
+        public async Task<JsonResult> Search(string query)
+        {
+            var words = await _repository.SearchByNameAsync(query.ToLower());
+            return Json(_mapper.Map<List<WordViewModel>>(words));
+        }
+
         [Route("{rank:int}")]
         public async Task<IActionResult> Rank(int rank)
         {

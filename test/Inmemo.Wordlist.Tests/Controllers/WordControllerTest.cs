@@ -101,6 +101,44 @@ namespace Inmemo.Wordlist.Controllers
         }
 
         [Fact]
+        public async Task SearchShouldReturnsWordList()
+        {
+            // Arrange
+            var testQuery = "time";
+            _mockWordRepository.Setup(repo => repo.SearchByNameAsync(testQuery)).Returns(Task.FromResult(GetWordList()));
+            var controller = new WordController(_mockWordRepository.Object, _mockMapper.Object);
+
+            // Act
+            var result = await controller.Search(testQuery);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var returnValue = Assert.IsType<List<WordViewModel>>(jsonResult.Value);
+            var word = returnValue.FirstOrDefault();
+            Assert.Equal(647, word.Id);
+            Assert.Equal("time", word.Name);
+            Assert.Equal(52, word.Rank);
+            Assert.Equal("noun", word.PartOfSpeech);
+        }
+
+        [Fact]
+        public async Task SearchShouldReturnsEmptyListWhenRepositoryReturnsEmptyList()
+        {
+            // Arrange
+            var testQuery = "nonexistent_word";
+            _mockWordRepository.Setup(repo => repo.SearchByNameAsync(testQuery)).Returns(Task.FromResult(GetEmptyWordList()));
+            var controller = new WordController(_mockWordRepository.Object, _mockMapper.Object);
+
+            // Act
+            var result = await controller.Search(testQuery);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var returnValue = Assert.IsType<List<WordViewModel>>(jsonResult.Value);
+            Assert.Equal(0, returnValue.Count());
+        }
+
+        [Fact]
         public async Task IdShouldReturnsWord()
         {
             // Arrange

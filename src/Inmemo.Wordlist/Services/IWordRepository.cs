@@ -9,6 +9,7 @@ namespace Inmemo.Wordlist.Services
         void Add(Word word);
         Task<Word> GetByIdAsync(int id);
         Task<List<Word>> GetByNameAsync(string name);
+        Task<List<Word>> SearchByNameAsync(string name);
         Task<Word> GetByRankAsync(int rank);
         void Remove(Word word);
         Task SaveAsync();
