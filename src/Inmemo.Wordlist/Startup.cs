@@ -35,9 +35,7 @@ namespace Inmemo.Wordlist
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<WordlistDbContext>(options =>
-                //options.UseSqlite("Data Source=Data.db")
-                options.UseSqlServer(Configuration["ConnectionString"])
+            services.AddDbContext<WordlistDbContext>(options => options.UseSqlServer(Configuration["ConnectionString"])
             );
             services.AddSingleton<IMapper>(sp => _mapperConfiguration.CreateMapper());
             services.AddScoped<IWordRepository, WordRepository>();

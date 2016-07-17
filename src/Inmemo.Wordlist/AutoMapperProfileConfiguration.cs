@@ -8,6 +8,7 @@ namespace Inmemo.Wordlist
     {
         public AutoMapperProfileConfiguration()
         {
+            CreateMap<PartOfSpeech, string>().ConvertUsing(e => e.ToString().ToLower());
             CreateMap<Word, WordViewModel>();
         }
     }

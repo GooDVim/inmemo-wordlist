@@ -4,6 +4,7 @@ namespace Inmemo.Wordlist.ViewModels
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string PartOfSpeech { get; set; }
         public int Rank { get; set; }
     }
 }

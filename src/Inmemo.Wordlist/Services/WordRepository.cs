@@ -26,7 +26,7 @@ namespace Inmemo.Wordlist.Services
 
         public Task<List<Word>> GetByNameAsync(string name)
         {
-            return _context.Words.Where(w => w.Name.Contains(name)).ToListAsync();
+            return _context.Words.Where(w => w.Name.Contains(name)).OrderBy(w => w.Rank).ToListAsync();
         }
 
         public Task<Word> GetByRankAsync(int rank)

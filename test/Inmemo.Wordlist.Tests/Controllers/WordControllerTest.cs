@@ -46,12 +46,12 @@ namespace Inmemo.Wordlist.Controllers
         }
 
         private WordViewModel GetWordViewModel(Word word){
-            return new WordViewModel { Id = word.Id, Name = word.Name, Rank = word.Rank };
+            return new WordViewModel { Id = word.Id, Name = word.Name, Rank = word.Rank, PartOfSpeech = word.PartOfSpeech.ToString().ToLower() };
         }
 
         private List<WordViewModel> GetWordViewModelList(List<Word> words)
         {
-            return words.Select(w => new WordViewModel { Id = w.Id, Name = w.Name, Rank = w.Rank }).ToList();
+            return words.Select(w => new WordViewModel { Id = w.Id, Name = w.Name, Rank = w.Rank, PartOfSpeech = w.PartOfSpeech.ToString().ToLower() }).ToList();
         }
 
         public WordControllerTest()
@@ -80,6 +80,7 @@ namespace Inmemo.Wordlist.Controllers
             Assert.Equal(647, word.Id);
             Assert.Equal("time", word.Name);
             Assert.Equal(52, word.Rank);
+            Assert.Equal("noun", word.PartOfSpeech);
         }
 
         [Fact]
@@ -116,6 +117,7 @@ namespace Inmemo.Wordlist.Controllers
             Assert.Equal(647, word.Id);
             Assert.Equal("time", word.Name);
             Assert.Equal(52, word.Rank);
+            Assert.Equal("noun", word.PartOfSpeech);
         }
 
         [Fact]
@@ -150,6 +152,7 @@ namespace Inmemo.Wordlist.Controllers
             Assert.Equal(647, word.Id);
             Assert.Equal("time", word.Name);
             Assert.Equal(52, word.Rank);
+            Assert.Equal("noun", word.PartOfSpeech);
         }
 
         [Fact]
