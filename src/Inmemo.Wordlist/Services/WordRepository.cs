@@ -14,9 +14,10 @@ namespace Inmemo.Wordlist.Services
             _context = context;
         }
 
-        public void Add(Word word)
+        public Task AddAsync(Word word)
         {
             _context.Add(word);
+            return _context.SaveChangesAsync();
         }
 
         public Task<Word> GetByIdAsync(int id)
@@ -38,13 +39,9 @@ namespace Inmemo.Wordlist.Services
             return _context.Words.FirstOrDefaultAsync(w => w.Rank == rank);
         }
 
-        public void Remove(Word word)
+        public Task RemoveAsync(Word word)
         {
             _context.Remove(word);
-        }
-
-        public Task SaveAsync()
-        {
             return _context.SaveChangesAsync();
         }
     }

@@ -6,12 +6,11 @@ namespace Inmemo.Wordlist.Services
 {
     public interface IWordRepository
     {
-        void Add(Word word);
+        Task AddAsync(Word word);
         Task<Word> GetByIdAsync(int id);
         Task<List<Word>> GetByNameAsync(string name);
         Task<List<Word>> SearchByNameAsync(string name);
         Task<Word> GetByRankAsync(int rank);
-        void Remove(Word word);
-        Task SaveAsync();
+        Task RemoveAsync(Word word);
     }
 }
