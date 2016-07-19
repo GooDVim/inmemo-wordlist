@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using Inmemo.Wordlist.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System.Linq;
 
 namespace Inmemo.Wordlist.Middlewares
 {

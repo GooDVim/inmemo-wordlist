@@ -54,7 +54,6 @@ namespace Inmemo.Wordlist
             {
                 app.UseAuthorizationMiddleware();
             }
-            app.UseStaticFiles();
             app.UseMvc();
         }
     }
