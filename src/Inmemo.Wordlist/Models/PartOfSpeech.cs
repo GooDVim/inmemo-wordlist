@@ -3,32 +3,26 @@ namespace Inmemo.Wordlist.Models
     public enum PartOfSpeech
     {
         // n
-        Noun,
+        Noun = 0,
         // v
-        Verb,
+        Verb = 1,
         // j
-        Adjective,
+        Adjective = 2,
         // r
-        Adverb,
-        // a
-        Article,
-        // c
-        Conjunction,
-        // d
-        Demonstrative,
-        // e
-        Existential,
+        Adverb = 3,
         // i
-        Preposition,
-        // m
-        Number,
+        Preposition = 4,
         // p
-        Pronoun,
-        // t
-        InvinitiveMarker,
+        Pronoun = 5,
+        // m
+        Number = 6,
+        // c
+        Conjunction = 7,
         // u
-        Interjection,
+        Interjection = 8,
+        // a
+        Article = 9,
         // x
-        Negotion
+        Negotion = 10
     }
 }
