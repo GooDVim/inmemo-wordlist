@@ -3,3 +3,5 @@ obj/
 /src/Inmemo.Wordlist/filesToImport/**/*
 /src/Inmemo.Wordlist/filesAlreadyImported/**/*
 project.lock.json
+.vs/
+*.user
